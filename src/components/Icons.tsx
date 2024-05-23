@@ -9,7 +9,7 @@ const Icons = {
       width="35"
       height="35"
       viewBox="0 0 48 48"
-      className="contain h-full w-full"
+      className="object-contain h-full w-full"
     >
       <path fill="#E65100" d="M41,5H7l3,34l14,4l14-4L41,5L41,5z"></path>
       <path fill="#FF6D00" d="M24 8L24 39.9 35.2 36.7 37.7 8z"></path>
@@ -31,7 +31,7 @@ const Icons = {
       width="35"
       height="35"
       viewBox="0 0 48 48"
-      className="contain h-full w-full"
+      className="object-contain h-full w-full"
     >
       <path fill="#0277BD" d="M41,5H7l3,34l14,4l14-4L41,5L41,5z"></path>
       <path fill="#039BE5" d="M24 8L24 39.9 35.2 36.7 37.7 8z"></path>
@@ -53,7 +53,7 @@ const Icons = {
       width="35"
       height="35"
       viewBox="0 0 48 48"
-      className="contain h-full w-full"
+      className="object-contain h-full w-full"
     >
       <path fill="#ffd600" d="M6,42V6h36v36H6z"></path>
       <path
@@ -70,7 +70,7 @@ const Icons = {
       width="35"
       height="35"
       viewBox="0 0 48 48"
-      className="contain h-full w-full"
+      className="object-contain h-full w-full"
     >
       <path
         fill="#00acc1"
@@ -86,7 +86,7 @@ const Icons = {
       width="35"
       height="35"
       viewBox="0 0 48 48"
-      className="contain h-full w-full"
+      className="object-contain h-full w-full"
     >
       <path
         fill="#80deea"
@@ -111,7 +111,7 @@ const Icons = {
       width="35"
       height="35"
       viewBox="0 0 48 48"
-      className="contain h-full w-full"
+      className="object-contain h-full w-full"
     >
       <path
         fill="#21a366"
@@ -131,7 +131,7 @@ const Icons = {
       width="35"
       height="35"
       viewBox="0 0 48 48"
-      className="contain h-full w-full"
+      className="object-contain h-full w-full"
     >
       <rect width="36" height="36" x="6" y="6" fill="#1976d2"></rect>
       <polygon
@@ -152,12 +152,19 @@ const Icons = {
       width="35"
       height="35"
       viewBox="0 0 50 50"
-      className="contain h-full w-full"
+      className="object-contain h-full w-full"
     >
       <path d="M49.729 11h-.85c-1.051 0-2.041.49-2.68 1.324l-8.7 11.377-8.7-11.377C28.162 11.49 27.171 11 26.121 11h-.85l10.971 14.346L25.036 40h.85c1.051 0 2.041-.49 2.679-1.324L37.5 26.992l8.935 11.684C47.073 39.51 48.063 40 49.114 40h.85L38.758 25.346 49.729 11zM21.289 34.242c-2.554 3.881-7.582 5.87-12.389 4.116C4.671 36.815 2 32.611 2 28.109L2 27h12v0h11l0-4.134c0-6.505-4.818-12.2-11.295-12.809C6.273 9.358 0 15.21 0 22.5l0 5.573c0 5.371 3.215 10.364 8.269 12.183 6.603 2.376 13.548-1.17 15.896-7.256 0 0 0 0 0 0h-.638C22.616 33 21.789 33.481 21.289 34.242zM2 22.5C2 16.71 6.71 12 12.5 12S23 16.71 23 22.5V25H2V22.5z"></path>
     </svg>
   ),
-  mongo: <Image src="mongodb.svg" alt="" className="contain w-10 h-full" />,
+  mongo: (
+    <Image
+      src="mongodb.svg"
+      alt=""
+      className="object-contain w-10 h-full"
+      layout="fill"
+    />
+  ),
   git: (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -166,7 +173,7 @@ const Icons = {
       width="35"
       height="35"
       viewBox="0 0 48 48"
-      className="contain w-full h-full"
+      className="object-contain w-full h-full"
     >
       <path
         fill="#F4511E"
@@ -182,12 +189,14 @@ const Icons = {
       version="1.1"
       width="32"
       data-view-component="true"
-      className="contain h-full w-full"
+      className="object-contain h-full w-full"
     >
       <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path>
     </svg>
   ),
-  linux: <Image className="contain h-8" alt="" src="linux.png" />,
+  linux: (
+    <Image className="object-contain h-8" alt="" src="/linux.png" layout="fill" />
+  ),
 };
 
 export default Icons;

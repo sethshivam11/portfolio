@@ -11,7 +11,7 @@ import {
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
-import { CardDefault } from "../components/CardDefault";
+import { ProjectCard } from "../components/ProjectCard";
 import Typewriter from "typewriter-effect";
 import Footer from "../components/Footer";
 import icons from "@/components/Icons";
@@ -47,53 +47,6 @@ export default function Home() {
     email: "",
   });
 
-  const images = [
-    "gadgetstore!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704454805/gadget-store/wanff6jdipyajbvr0ivy.png",
-    "chatapp!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456419/gadget-store/coz0elqxhrucgsfefwf8.png",
-    "cloudnotebook!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456418/gadget-store/zxbhft8dxwdwwcyiikf4.png",
-    "moviesandtv!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1706461801/gadget-store/wtjjddmuatsxzvpbyjps.png",
-    "2048!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456420/gadget-store/kfhxvzhotnfbukmb69hy.png",
-    "copypaste!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456418/gadget-store/flolutsgg2ei8goxnslg.png",
-    "grosery!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456425/gadget-store/ed7l6bcujfqy1cnaapt1.png",
-    "myonline!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456424/gadget-store/lfbl4cvuvf92xtyz2vk0.png",
-    "newsapp!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456421/gadget-store/dl8ytjgggiuwcnejk0ym.png",
-    "robospeaker!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456912/gadget-store/vgchgwjhexbnut7duthn.png",
-    "scholarship!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456421/gadget-store/kh0cum8cfkb4hwa6dg7l.png",
-    "sda!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456889/gadget-store/tmafjkxcttnzqjnpdi93.png",
-    "sudoku!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456421/gadget-store/sl8tmc385fkothhl8g0x.png",
-    "weather!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1705748723/gadget-store/e2glyvsyxj5ad1t8m0w4.png",
-    "gpt-clone!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1707051362/gadget-store/fgkfhdy057qwcg3bpuar.png",
-    "todo!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1707051363/gadget-store/omkupcly4hprbbtbivql.png",
-    "campus-space!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1713356341/gadget-store/v7v4jupfz8eajsw19ogv.png",
-    "sociial!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1715840499/gadget-store/cptou5lr64gkqrzvkfjl.png",
-  ];
-
-  const getRepos = (url: string) => {
-    fetch(`${url}/repos`)
-      .then((res) => res.json())
-      .then((data) => {
-        let mapData: Repo[] = [];
-        data.forEach((repository: Repo) => {
-          if (
-            repository.name === "campus-space" ||
-            repository.name === "gadgetstore" ||
-            repository.name === "sociial"
-          ) {
-            mapData.push(repository);
-            let name: string = repository.name;
-            images.forEach((link) => {
-              if (link.includes(name)) {
-                repository.image = link.split("!")[1];
-              }
-            });
-          }
-        });
-        setRepos(mapData);
-        setAvatar(data[0].owner.avatar_url);
-      })
-      .catch((err) => console.log(err));
-  };
-
   const saveMessage = async () => {
     setLoading(true);
     await fetch("/api/create", {
@@ -123,8 +76,54 @@ export default function Home() {
   const contact = React.useRef() as React.MutableRefObject<HTMLDivElement>;
 
   React.useEffect(() => {
+    const images = [
+      "gadgetstore!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1716479485/gadget-store/hk5fbe0osyhfnigas0it.png",
+      "chatapp!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456419/gadget-store/coz0elqxhrucgsfefwf8.png",
+      "cloudnotebook!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456418/gadget-store/zxbhft8dxwdwwcyiikf4.png",
+      "moviesandtv!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1706461801/gadget-store/wtjjddmuatsxzvpbyjps.png",
+      "2048!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456420/gadget-store/kfhxvzhotnfbukmb69hy.png",
+      "copypaste!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456418/gadget-store/flolutsgg2ei8goxnslg.png",
+      "grosery!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456425/gadget-store/ed7l6bcujfqy1cnaapt1.png",
+      "myonline!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456424/gadget-store/lfbl4cvuvf92xtyz2vk0.png",
+      "newsapp!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456421/gadget-store/dl8ytjgggiuwcnejk0ym.png",
+      "robospeaker!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456912/gadget-store/vgchgwjhexbnut7duthn.png",
+      "scholarship!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456421/gadget-store/kh0cum8cfkb4hwa6dg7l.png",
+      "sda!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456889/gadget-store/tmafjkxcttnzqjnpdi93.png",
+      "sudoku!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456421/gadget-store/sl8tmc385fkothhl8g0x.png",
+      "weather!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1705748723/gadget-store/e2glyvsyxj5ad1t8m0w4.png",
+      "gpt-clone!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1707051362/gadget-store/fgkfhdy057qwcg3bpuar.png",
+      "todo!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1707051363/gadget-store/omkupcly4hprbbtbivql.png",
+      "campus-space!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1716479483/gadget-store/xj2ylslxkzz99acd1xbs.png",
+      "sociial!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1715840499/gadget-store/cptou5lr64gkqrzvkfjl.png",
+    ];
+
+    const getRepos = (url: string) => {
+      fetch(`${url}/repos`)
+        .then((res) => res.json())
+        .then((data) => {
+          let mapData: Repo[] = [];
+          data.forEach((repository: Repo) => {
+            if (
+              repository.name === "campus-space" ||
+              repository.name === "gadgetstore" ||
+              repository.name === "sociial"
+            ) {
+              mapData.push(repository);
+              let name: string = repository.name;
+              images.forEach((link) => {
+                if (link.includes(name)) {
+                  repository.image = link.split("!")[1];
+                }
+              });
+            }
+          });
+          setRepos(mapData);
+          setAvatar(data[0].owner.avatar_url);
+        })
+        .catch((err) => console.log(err));
+    };
     getRepos("https://api.github.com/users/sethshivam11");
-  }, [getRepos]);
+  }, []);
 
   return (
     <section className="overflow-hidden relative scroll-smooth dark:bg-black/95 dark:text-gray-200 transition-colors duration-400">
@@ -161,9 +160,10 @@ export default function Home() {
           />
         </div>
         <p className="lg:text-xl md:text-lg md:text-md sm:text-md text-justify text-slate-700 lg:w-2/5 md:w-3/5 sm:w-4/5 w-4/5 mr-2 font-poppins pt-4">
-          Shivam Soni, a passionate developer. Currently, pursuing Bachelor&apos;s in
-          Computer Science from ARSD College, DU. Looking for Internships to
-          gain some industry practices and upgrade my skills accordingly.
+          Shivam Soni, a passionate developer. Currently, pursuing
+          Bachelor&apos;s in Computer Science from ARSD College, DU. Looking for
+          Internships to gain some industry practices and upgrade my skills
+          accordingly.
         </p>
         <Button
           variant="ghost"
@@ -183,7 +183,14 @@ export default function Home() {
             <Tooltip>
               <TooltipTrigger>
                 <div className="basis-24 lg:basis-44 md:basis-36">
-                  <Image className="contain" src="react.svg" alt="" />
+                  <div className="h-52 relative">
+                    <Image
+                      className="object-contain"
+                      src="react.svg"
+                      alt=""
+                      layout="fill"
+                    />
+                  </div>
                 </div>
               </TooltipTrigger>
               <TooltipContent>ReactJS</TooltipContent>
@@ -193,7 +200,14 @@ export default function Home() {
             <Tooltip>
               <TooltipTrigger>
                 <div className="basis-24 lg:basis-44 md:basis-36">
-                  <Image className="contain" src="js.svg" alt="" />
+                <div className="h-52 relative">
+                  <Image
+                    className="object-contain"
+                    src="js.svg"
+                    alt=""
+                    layout="fill"
+                  />
+                </div>
                 </div>
               </TooltipTrigger>
               <TooltipContent>JavaScript</TooltipContent>
@@ -203,7 +217,15 @@ export default function Home() {
             <Tooltip>
               <TooltipTrigger>
                 <div className="basis-24 lg:basis-44 md:basis-36">
-                  <Image className="contain" src="express.svg" alt="" />
+                <div className="h-52 relative">
+
+                  <Image
+                    className="object-contain"
+                    src="express.svg"
+                    alt=""
+                    layout="fill"
+                  />
+                </div>
                 </div>
               </TooltipTrigger>
               <TooltipContent>ExpressJS</TooltipContent>
@@ -213,7 +235,15 @@ export default function Home() {
             <Tooltip>
               <TooltipTrigger>
                 <div className="basis-24 lg:basis-44 md:basis-36">
-                  <Image className="contain" src="node.svg" alt="" />
+                <div className="h-52 relative">
+
+                  <Image
+                    className="object-contain"
+                    src="node.svg"
+                    alt=""
+                    layout="fill"
+                  />
+                </div>
                 </div>
               </TooltipTrigger>
               <TooltipContent>NodeJS</TooltipContent>
@@ -223,7 +253,15 @@ export default function Home() {
             <Tooltip>
               <TooltipTrigger>
                 <div className="basis-24 lg:basis-44 md:basis-36">
-                  <Image className="contain" src="github.svg" alt="" />
+                <div className="h-52 relative">
+
+                  <Image
+                    className="object-contain"
+                    src="github.svg"
+                    alt=""
+                    layout="fill"
+                  />
+                </div>
                 </div>
               </TooltipTrigger>
               <TooltipContent>Git & Github</TooltipContent>
@@ -233,7 +271,15 @@ export default function Home() {
             <Tooltip>
               <TooltipTrigger>
                 <div className="basis-24 lg:basis-44 md:basis-36">
-                  <Image className="contain" src="mongo.svg" alt="" />
+                <div className="h-52 relative">
+
+                  <Image
+                    className="object-contain"
+                    src="mongo.svg"
+                    alt=""
+                    layout="fill"
+                  />
+                </div>
                 </div>
               </TooltipTrigger>
               <TooltipContent>MongoDB</TooltipContent>
@@ -294,8 +340,8 @@ export default function Home() {
           <p className="pt-4 text-black text-2xl font-poppins py-4">Database</p>
           <div className="flex flex-row flex-wrap gap-4">
             <Badge variant="outline" className="flex gap-2 font-normal text-lg">
-              {icons.mongo}
-              ReactJS
+              <div className="relative h-10 w-10">{icons.mongo}</div>
+              MongoDB
             </Badge>
           </div>
         </li>
@@ -312,7 +358,7 @@ export default function Home() {
               GitHub
             </Badge>
             <Badge variant="outline" className="flex gap-2 font-normal text-lg">
-              {icons.linux}
+              <div className="relative h-10 w-10">{icons.linux}</div>
               Linux
             </Badge>
           </div>
@@ -325,7 +371,7 @@ export default function Home() {
         <div className="flex justify-center w-fit sm:flex-col sm:gap-2 flex-col md:flex-col md:gap-2 lg:flex-row gap-6 font-poppins">
           {repos.map((repo) => {
             return (
-              <CardDefault
+              <ProjectCard
                 key={repo.name}
                 image={repo.image}
                 heading={repo.name}

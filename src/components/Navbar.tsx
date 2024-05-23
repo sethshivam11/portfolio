@@ -2,6 +2,9 @@ import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import React from "react";
+import { Dancing_Script } from "next/font/google";
+
+const dancing = Dancing_Script({subsets: ["latin"]})
 
 interface Props {
   home: React.MutableRefObject<HTMLDivElement>;
@@ -30,12 +33,15 @@ function Navbar({ home, skills, projects, contact, avatar }: Props) {
             className="flex flex-row gap-2 items-center cursor-pointer"
             onClick={() => home.current.scrollIntoView()}
           >
-            <Image
-              src={avatar}
-              alt=""
-              className="w-10 object-contain rounded-full"
-            />
-            <span className="font-bold text-xl text-gray-700">Shivam</span>
+            <div className="w-10 h-10 relative">
+              <Image
+                src={avatar}
+                alt=""
+                layout="fill"
+                className="object-contain rounded-full"
+              />
+            </div>
+            <span className={`font-extrabold text-2xl ${dancing.className}`}>Shivam</span>
           </div>
         </span>
         <ul className="flex gap-2">
@@ -81,54 +87,49 @@ function Navbar({ home, skills, projects, contact, avatar }: Props) {
         className={`flex flex-col absolute transition-transform duration-300 z-10 w-full top-16 "
       ${openNav ? "-translate-y-0" : "-translate-y-64"}`}
       >
-       
-          <Button
-            variant="ghost"
-            onClick={() => {
-              home.current.scrollIntoView();
-              setOpenNav(!openNav);
-            }}
-            className="md:hidden w-full rounded-none py-5 bg-transparent/5 "
-          >
-            Home
-          </Button>
-        
-       
-          <Button
-            variant="ghost"
-            onClick={() => {
-              skills.current.scrollIntoView();
-              setOpenNav(!openNav);
-            }}
-            className="md:hidden w-full rounded-none py-5 bg-transparent/5 "
-          >
-            Skills
-          </Button>
-        
-       
-          <Button
-            variant="ghost"
-            onClick={() => {
-              projects.current.scrollIntoView();
-              setOpenNav(!openNav);
-            }}
-            className="md:hidden w-full rounded-none py-5 bg-transparent/5 "
-          >
-            Projects
-          </Button>
-        
-       
-          <Button
-            variant="ghost"
-            onClick={() => {
-              contact.current.scrollIntoView();
-              setOpenNav(!openNav);
-            }}
-            className="md:hidden w-full rounded-none py-5 bg-transparent/5 "
-          >
-            Contact
-          </Button>
-        
+        <Button
+          variant="ghost"
+          onClick={() => {
+            home.current.scrollIntoView();
+            setOpenNav(!openNav);
+          }}
+          className="md:hidden w-full rounded-none py-5 bg-transparent/5 "
+        >
+          Home
+        </Button>
+
+        <Button
+          variant="ghost"
+          onClick={() => {
+            skills.current.scrollIntoView();
+            setOpenNav(!openNav);
+          }}
+          className="md:hidden w-full rounded-none py-5 bg-transparent/5 "
+        >
+          Skills
+        </Button>
+
+        <Button
+          variant="ghost"
+          onClick={() => {
+            projects.current.scrollIntoView();
+            setOpenNav(!openNav);
+          }}
+          className="md:hidden w-full rounded-none py-5 bg-transparent/5 "
+        >
+          Projects
+        </Button>
+
+        <Button
+          variant="ghost"
+          onClick={() => {
+            contact.current.scrollIntoView();
+            setOpenNav(!openNav);
+          }}
+          className="md:hidden w-full rounded-none py-5 bg-transparent/5 "
+        >
+          Contact
+        </Button>
       </div>
     </>
   );
