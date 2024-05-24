@@ -107,13 +107,6 @@
     filter: blur(2px);
   }
   
-  @media only screen and (max-width: 768px) and (min-width: 640px) {
-    .ellipse-red {
-      transform: translate(-4%, -80%) rotate(-46.693deg);
-      border-radius: 100%;
-    }
-  }
-
   @layer base {
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
