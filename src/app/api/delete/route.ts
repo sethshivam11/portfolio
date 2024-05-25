@@ -24,6 +24,7 @@ export async function DELETE(request: Request) {
       !(typeof password === "string") ||
       password.trim() !== process.env.PASSWORD
     ) {
+      console.log(password, process.env.PASSWORD);
       return Response.json(
         {
           success: false,

@@ -94,7 +94,7 @@ export default function Home() {
       "gpt-clone!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1707051362/gadget-store/fgkfhdy057qwcg3bpuar.png",
       "todo!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1707051363/gadget-store/omkupcly4hprbbtbivql.png",
       "campus-space!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1716479483/gadget-store/xj2ylslxkzz99acd1xbs.png",
-      "sociial!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1715840499/gadget-store/cptou5lr64gkqrzvkfjl.png",
+      "social-media-backend!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1716652387/gadget-store/g84hiq73cygxp71gh42k.jpg",
     ];
 
     const getRepos = (url: string) => {
@@ -106,7 +106,7 @@ export default function Home() {
             if (
               repository.name === "campus-space" ||
               repository.name === "gadgetstore" ||
-              repository.name === "sociial"
+              repository.name === "social-media-backend"
             ) {
               mapData.push(repository);
               let name: string = repository.name;
