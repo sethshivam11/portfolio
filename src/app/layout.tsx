@@ -16,6 +16,37 @@ export const metadata: Metadata = {
     icon: "favicon.ico",
     apple: "apple-touch-icon.png",
   },
+  metadataBase: new URL(process.env.PUBLIC_URL || ""),
+  openGraph: {
+    type: "website",
+    url: process.env.PUBLIC_URL || "",
+    title: "Shivam",
+    description: "Developer's Portfolio",
+    siteName: "Shivam",
+    images: [
+      {
+        url: `${process.env.PUBLIC_URL}/opengraph-image.jpg`,
+        type: "image/jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Shivam",
+    description: "Developer's Portfolio",
+    creator: "@sethshivam11",
+    siteId: "765045797750706176",
+    images: [
+      {
+        url: `${process.env.PUBLIC_URL}/opengraph-image.jpg`,
+        type: "image/jpg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
