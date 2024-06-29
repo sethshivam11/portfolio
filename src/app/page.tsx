@@ -62,6 +62,9 @@ export default function Home() {
           setLoading(false);
           setMessage({ name: "", message: "", phone: "", email: "" });
           toast.success("Message sent successfully");
+        } else {
+          setLoading(false);
+          toast.error("Some error occured");
         }
       })
       .catch((err) => {
@@ -188,7 +191,8 @@ export default function Home() {
                       className="object-contain"
                       src="react.svg"
                       alt=""
-                      layout="fill"
+                  width="300"
+                  height="600"
                     />
                   </div>
                 </div>
@@ -205,7 +209,8 @@ export default function Home() {
                     className="object-contain"
                     src="js.svg"
                     alt=""
-                    layout="fill"
+                  width="300"
+                  height="600"
                   />
                 </div>
                 </div>
@@ -223,7 +228,8 @@ export default function Home() {
                     className="object-contain"
                     src="express.svg"
                     alt=""
-                    layout="fill"
+                  width="300"
+                  height="600"
                   />
                 </div>
                 </div>
@@ -241,7 +247,8 @@ export default function Home() {
                     className="object-contain"
                     src="node.svg"
                     alt=""
-                    layout="fill"
+                  width="300"
+                  height="600"
                   />
                 </div>
                 </div>
@@ -259,7 +266,8 @@ export default function Home() {
                     className="object-contain"
                     src="github.svg"
                     alt=""
-                    layout="fill"
+                  width="300"
+                  height="600"
                   />
                 </div>
                 </div>
@@ -277,7 +285,8 @@ export default function Home() {
                     className="object-contain"
                     src="mongo.svg"
                     alt=""
-                    layout="fill"
+                  width="300"
+                  height="600"
                   />
                 </div>
                 </div>

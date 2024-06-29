@@ -3,6 +3,7 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import React from "react";
 import { Dancing_Script } from "next/font/google";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 const dancing = Dancing_Script({ subsets: ["latin"] });
 
@@ -25,14 +26,14 @@ function Navbar({ home, skills, projects, contact, avatar }: Props) {
             className="flex flex-row gap-2 items-center cursor-pointer"
             onClick={() => home.current.scrollIntoView()}
           >
-            <div className="w-10 h-10 relative">
-              <Image
-                src={avatar}
-                alt=""
-                layout="fill"
-                className="object-contain rounded-full"
-              />
-            </div>
+            <Avatar className="w-10 h-10">
+              <AvatarImage src={avatar} />
+              <AvatarFallback
+                className={`bg-stone-900 text-white ${dancing.className}`}
+              >
+                SS
+              </AvatarFallback>
+            </Avatar>
             <span className={`font-extrabold text-2xl ${dancing.className}`}>
               Shivam
             </span>
