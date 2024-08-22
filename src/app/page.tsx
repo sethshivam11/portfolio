@@ -2,26 +2,17 @@
 import React from "react";
 import toast from "react-hot-toast";
 import Navbar from "../components/Navbar";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Textarea } from "../components/ui/textarea";
 import { ProjectCard } from "../components/ProjectCard";
 import Typewriter from "typewriter-effect";
-import Footer from "../components/Footer";
-import icons from "@/components/Icons";
-import { Badge } from "@/components/ui/badge";
-import { Loader2 } from "lucide-react";
+import { Github, Linkedin, Loader2, Mail, Twitter } from "lucide-react";
 import { Label } from "@/components/ui/label";
-import Image from "next/image";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import Icons from "@/components/Icons";
 import CustomBadge from "@/components/CustomBadge";
+import Link from "next/link";
 
 interface Repo {
   homepage: string;
@@ -188,7 +179,7 @@ export default function Home() {
             </Button>
           </div>
         </div>
-        <div className="container">
+        <div className="sm:container px-3">
           <hr className="bg-stone-500 mb-6" />
           <div className="flex flex-col items-center gap-6">
             <h3
@@ -276,7 +267,7 @@ export default function Home() {
             <h3 className="w-full text-center lg:text-4xl text-3xl font-extrabold font-serif">
               Projects
             </h3>
-            <div className="flex justify-center flex-col sm:gap-2 lg:flex-row gap-6 font-poppins">
+            <div className="flex justify-center max-lg:flex-col sm:gap-2 gap-6">
               {repos.map((repo) => {
                 return (
                   <ProjectCard
@@ -296,11 +287,11 @@ export default function Home() {
           ref={contact}
           className="w-full text-center px-6 mt-6 py-8 bg-stone-100 dark:bg-stone-900"
         >
-          <div className="container w-full">
-            <h3 className="bg-transparent lg:text-4xl text-3xl font-serif pb-6 pl-4 w-full font-extrabold">
-              Contact me
-            </h3>
-            <div className="space-y-2 lg:w-2/5 pl-4 w-full mx-auto text-left">
+          <div className="flex max-sm:flex-col items-center justify-between h-full w-full sm:container gap-4">
+            <div className="space-y-2 lg:w-3/5 md:w-4/5 w-full text-left">
+              <h3 className="bg-transparent lg:text-4xl text-3xl font-serif pb-6 font-extrabold max-sm:text-center">
+                Connect with me...
+              </h3>
               <div className="space-y-1">
                 <Label htmlFor="name">Name</Label>
                 <Input
@@ -360,23 +351,62 @@ export default function Home() {
                   title="Message"
                 />
               </div>
+              <Button
+                onClick={saveMessage}
+                className="my-4 capitalize max-sm:w-full"
+                size="lg"
+                disabled={
+                  message.name.trim().length === 0 ||
+                  message.message.trim().length === 0 ||
+                  message.email.trim().length === 0 ||
+                  loading
+                }
+              >
+                {loading ? <Loader2 className="animate-spin" /> : "Submit"}
+              </Button>
             </div>
-            <Button
-              onClick={saveMessage}
-              className="my-4 ml-4 capitalize font-normal"
-              size="lg"
-              disabled={
-                message.name.trim().length === 0 ||
-                message.message.trim().length === 0 ||
-                message.email.trim().length === 0 ||
-                loading
-              }
-            >
-              {loading ? <Loader2 className="animate-spin" /> : "Submit"}
-            </Button>
+            <div className="flex sm:flex-col max-sm:w-full h-full gap-2 items-center justify-evenly">
+              <Link
+                title="GitHub"
+                href="https://github.com/sethshivam11"
+                className="ring-1 ring-stone-500 hover:bg-foreground hover:text-background hover:ring-foreground rounded-full p-3"
+              >
+                <Github />
+              </Link>
+              <Link
+                title="LinkedIn"
+                href="https://linkedin.com/in/sethshivam11"
+                className="ring-1 ring-stone-500 hover:bg-foreground hover:text-background hover:ring-foreground rounded-full p-3"
+              >
+                <Linkedin />
+              </Link>
+              <Link
+                title="X"
+                href="https://x.com/sethshivam11"
+                className="ring-1 ring-stone-500 hover:bg-foreground hover:text-background hover:ring-foreground rounded-full p-3"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28px"
+                  height="28px"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07l-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"
+                  />
+                </svg>
+              </Link>
+              <Link
+                title="Mail"
+                href="mailto:legendshivam11@gmail.com"
+                className="ring-1 ring-stone-500 hover:bg-foreground hover:text-background hover:ring-foreground rounded-full p-3"
+              >
+                <Mail />
+              </Link>
+            </div>
           </div>
         </div>
-        <Footer />
       </section>
     </ThemeProvider>
   );
