@@ -1,9 +1,9 @@
 import { Button } from "./ui/button";
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
 import React from "react";
 import { Dancing_Script } from "next/font/google";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import ModeToggle from "./ModeToggle";
 
 const dancing = Dancing_Script({ subsets: ["latin"] });
 
@@ -38,55 +38,33 @@ function Navbar({ home, skills, projects, contact, avatar }: Props) {
               Shivam
             </span>
           </div>
-          <Button
-            size="icon"
-            variant="default"
-            className="md:hidden bg-transparent hover:bg-transparent/5 text-zinc-800"
-            onClick={() => setOpenNav(!openNav)}
-          >
-            {openNav ? <X /> : <Menu />}
-          </Button>
+          <div className="space-x-2 md:hidden">
+            <ModeToggle />
+            <Button
+              size="icon"
+              variant="default"
+              className="bg-transparent hover:bg-transparent/5 text-zinc-800"
+              onClick={() => setOpenNav(!openNav)}
+            >
+              {openNav ? <X /> : <Menu />}
+            </Button>
+          </div>
         </div>
-        <ul className="md:flex hidden gap-2">
-          <li>
-            <Button
-              variant="link"
-              onClick={() => home.current.scrollIntoView()}
-              className="text-lg"
-            >
-              Home
-            </Button>
-          </li>
-          <li>
-            <Button
-              variant="link"
-              onClick={() => skills.current.scrollIntoView()}
-              className="text-lg"
-            >
-              Skills
-            </Button>
-          </li>
-          <li>
-            <Button
-              variant="link"
-              onClick={() => projects.current.scrollIntoView()}
-              className="text-lg"
-            >
-              Projects
-            </Button>
-          </li>
-          <li>
-            <Button
-              variant="link"
-              onClick={() => contact.current.scrollIntoView()}
-              className="text-lg"
-            >
-              Contact
-            </Button>
-          </li>
-        </ul>
+        <div className="md:flex hidden gap-2 text-lg">
+          <Button className="bg-transparent hover:bg-transparent hover:underline text-black dark:text-white" onClick={() => home.current.scrollIntoView()}>Home</Button>
+          <Button className="bg-transparent hover:bg-transparent hover:underline text-black dark:text-white" onClick={() => skills.current.scrollIntoView()}>
+            Skills
+          </Button>
+          <Button className="bg-transparent hover:bg-transparent hover:underline text-black dark:text-white" onClick={() => projects.current.scrollIntoView()}>
+            Projects
+          </Button>
+          <Button className="bg-transparent hover:bg-transparent hover:underline text-black dark:text-white" onClick={() => contact.current.scrollIntoView()}>
+            Contact
+          </Button>
+          <ModeToggle />
+        </div>
       </nav>
-      <div
+      <nav
         className={`flex flex-col fixed transition-transform backdrop-blur-sm duration-300 z-10 w-full top-16 "
       ${openNav ? "-translate-y-0" : "-translate-y-64"}`}
       >
@@ -133,7 +111,7 @@ function Navbar({ home, skills, projects, contact, avatar }: Props) {
         >
           Contact
         </Button>
-      </div>
+      </nav>
     </>
   );
 }

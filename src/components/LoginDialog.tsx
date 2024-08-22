@@ -51,6 +51,7 @@ export function LoginDialog({ isLoggedin, setLoggedin, setMessages }: Props) {
           setMessages(resData.msg);
           setOpen((cur) => !cur);
           setLoggedin(true);
+          setCreds({ username: "", password: "" });
           toast.success("Logged in successfully");
         } else {
           toast.error(resData.message);

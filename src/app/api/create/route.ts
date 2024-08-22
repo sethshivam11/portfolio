@@ -1,4 +1,5 @@
 import connect from "@/lib/dbConfig";
+import sendEmail from "@/lib/mailer";
 import { MessageModel } from "@/models/message.model";
 
 export async function POST(request: Request) {
@@ -24,6 +25,8 @@ export async function POST(request: Request) {
       message,
       phone,
     });
+
+    await sendEmail(name, message, email, phone);
 
     return Response.json({
       success: true,

@@ -19,6 +19,9 @@ import { Badge } from "@/components/ui/badge";
 import { Loader2 } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import Image from "next/image";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import Icons from "@/components/Icons";
+import CustomBadge from "@/components/CustomBadge";
 
 interface Repo {
   homepage: string;
@@ -129,9 +132,12 @@ export default function Home() {
   }, []);
 
   return (
-    <section className="overflow-hidden relative scroll-smooth dark:bg-black/95 dark:text-gray-200 transition-colors duration-400">
-      <div className="ellipse-blue" />
-      <div className="ellipse-red" />
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
       <Navbar
         avatar={avatar}
         home={home}
@@ -139,340 +145,239 @@ export default function Home() {
         projects={projects}
         contact={contact}
       />
-      <div
-        ref={home}
-        className="flex flex-col items-start justify-center h-screen min-h-[40rem] py-32 w-screen border-solid border-b-2 border-gray-300 z-10 lg:p-20 p-6"
-      >
-        <p className="inline-block text-[cadetblue] lg:text-5xl md:text-4xl sm:text-3xl text-3xl font-normal font-inika py-1 lg:pt-12 md:pt-12">
-          Hi I&apos;m a
-        </p>
-        <div className="inline-block text-slate-950 lg:text-7xl md:text-6xl sm:text-5xl text-4xl font-normal font-istok pb-2">
-          <Typewriter
-            options={{
-              strings: [
-                "Web Developer",
-                "MERN Developer",
-                "Frontend Developer",
-                "Backend Developer",
-              ],
-              autoStart: true,
-              loop: true,
-              delay: 100,
-              deleteSpeed: 100,
-            }}
-          />
-        </div>
-        <p className="lg:text-xl md:text-lg md:text-md sm:text-md text-justify text-slate-700 lg:w-2/5 md:w-3/5 sm:w-4/5 w-4/5 mr-2 font-poppins pt-4">
-          Shivam Soni, a passionate developer. Currently, pursuing
-          Bachelor&apos;s in Computer Science from ARSD College, DU. Looking for
-          Internships to gain some industry practices and upgrade my skills
-          accordingly.
-        </p>
-        <Button
-          variant="ghost"
-          size="lg"
-          className="rounded-lg text-gray-800 ml-8 mt-10 ring-1 ring-gray-400 font-normal text-lg"
-          onClick={() => contact.current.scrollIntoView()}
-        >
-          Connect
-        </Button>
-      </div>
-      <div ref={skills} className="h-fit w-screen z-10 pt-10 p-6">
-        <p className="text-black lg:text-4xl lg:pl-10 md:pl-6 text-3xl font-normal font-serif">
-          Major Skills
-        </p>
-        <div className="grid md:grid-cols-6 grid-cols-3 place-content-center mt-10 lg:mx-10 mx-4 font-poppins">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <div className="basis-24 lg:basis-44 md:basis-36">
-                  <div className="h-52 relative">
-                    <Image
-                      className="object-contain"
-                      src="react.svg"
-                      alt=""
-                  width="300"
-                  height="600"
-                    />
-                  </div>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>ReactJS</TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <div className="basis-24 lg:basis-44 md:basis-36">
-                <div className="h-52 relative">
-                  <Image
-                    className="object-contain"
-                    src="js.svg"
-                    alt=""
-                  width="300"
-                  height="600"
-                  />
-                </div>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>JavaScript</TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <div className="basis-24 lg:basis-44 md:basis-36">
-                <div className="h-52 relative">
-
-                  <Image
-                    className="object-contain"
-                    src="express.svg"
-                    alt=""
-                  width="300"
-                  height="600"
-                  />
-                </div>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>ExpressJS</TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <div className="basis-24 lg:basis-44 md:basis-36">
-                <div className="h-52 relative">
-
-                  <Image
-                    className="object-contain"
-                    src="node.svg"
-                    alt=""
-                  width="300"
-                  height="600"
-                  />
-                </div>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>NodeJS</TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <div className="basis-24 lg:basis-44 md:basis-36">
-                <div className="h-52 relative">
-
-                  <Image
-                    className="object-contain"
-                    src="github.svg"
-                    alt=""
-                  width="300"
-                  height="600"
-                  />
-                </div>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>Git & Github</TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger>
-                <div className="basis-24 lg:basis-44 md:basis-36">
-                <div className="h-52 relative">
-
-                  <Image
-                    className="object-contain"
-                    src="mongo.svg"
-                    alt=""
-                  width="300"
-                  height="600"
-                  />
-                </div>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>MongoDB</TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
-        </div>
-      </div>
-      <p className="w-full pb-6 ml-6 text-black lg:text-4xl lg:pl-10 md:pl-6 text-3xl font-normal font-serif">
-        All Skills
-      </p>
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 place-content-center border-solid border-b-2 border-gray-300 md:px-20 sm:px-12 px-8 pb-4">
-        <li>
-          <p className="text-black text-2xl font-poppins py-4">Frontend</p>
-          <div className="flex flex-row flex-wrap gap-4">
-            <Badge variant="outline" className="flex gap-2 font-normal text-lg">
-              {icons.html}
-              {/* <span className="text-lg font-normal">HTML</span> */}
-              HTML
-            </Badge>
-            <Badge variant="outline" className="flex gap-2 font-normal text-lg">
-              {icons.css}
-              CSS
-            </Badge>
-            <Badge variant="outline" className="flex gap-2 font-normal text-lg">
-              {icons.js}
-              JavaScript
-            </Badge>
-            <Badge variant="outline" className="flex gap-2 font-normal text-lg">
-              {icons.tailwind}
-              TailwindCSS
-            </Badge>
-            <Badge variant="outline" className="flex gap-2 font-normal text-lg">
-              {icons.react}
-              ReactJS
-            </Badge>
-          </div>
-        </li>
-
-        <li>
-          <p className="pt-4 text-black text-2xl font-poppins py-4">Backend</p>
-          <div className="flex flex-row flex-wrap gap-4">
-            <Badge variant="outline" className="flex gap-2 font-normal text-lg">
-              {icons.nodejs}
-              NodeJS
-            </Badge>
-            <Badge variant="outline" className="flex gap-2 font-normal text-lg">
-              {icons.express}
-              ExpressJS
-            </Badge>
-            <Badge variant="outline" className="flex gap-2 font-normal text-lg">
-              {icons.typescript}
-              TypeScript
-            </Badge>
-          </div>
-        </li>
-
-        <li>
-          <p className="pt-4 text-black text-2xl font-poppins py-4">Database</p>
-          <div className="flex flex-row flex-wrap gap-4">
-            <Badge variant="outline" className="flex gap-2 font-normal text-lg">
-              <div className="relative h-10 w-10">{icons.mongo}</div>
-              MongoDB
-            </Badge>
-          </div>
-        </li>
-
-        <li>
-          <p className="pt-4 text-black text-2xl font-poppins py-4">Others</p>
-          <div className="flex flex-row flex-wrap gap-4">
-            <Badge variant="outline" className="flex gap-2 font-normal text-lg">
-              {icons.git}
-              Git
-            </Badge>
-            <Badge variant="outline" className="flex gap-2 font-normal text-lg">
-              {icons.github}
-              GitHub
-            </Badge>
-            <Badge variant="outline" className="flex gap-2 font-normal text-lg">
-              <div className="relative h-10 w-10">{icons.linux}</div>
-              Linux
-            </Badge>
-          </div>
-        </li>
-      </ul>
-      <div ref={projects} className="p-6 w-screen">
-        <p className="mt-10 pb-8 text-black lg:text-4xl lg:pl-10 md:pl-6 text-3xl font-serif">
-          Projects
-        </p>
-        <div className="flex justify-center w-fit sm:flex-col sm:gap-2 flex-col md:flex-col md:gap-2 lg:flex-row gap-6 font-poppins">
-          {repos.map((repo) => {
-            return (
-              <ProjectCard
-                key={repo.name}
-                image={repo.image}
-                heading={repo.name}
-                details={repo.description}
-                visit={repo.homepage}
-                code={repo.html_url}
+      <section className="overflow-hidden relative scroll-smooth transition-colors duration-400">
+        <div className="bg-gradient-to-br from-sky-300 via-white to-white dark:from-sky-800 dark:via-black dark:to-black">
+          <div
+            ref={home}
+            className="flex flex-col items-start justify-center h-screen min-h-[40rem] py-32 w-full z-10 md:p-10 container"
+          >
+            <h3 className="text-stone-500 lg:text-5xl md:text-4xl sm:text-3xl text-3xl font-extrabold tracking-tight py-1 lg:pt-12 md:pt-12">
+              Hi I&apos;m a
+            </h3>
+            <h1 className="lg:text-7xl md:text-6xl sm:text-5xl text-4xl font-bold tracking-tighter pb-2">
+              <Typewriter
+                options={{
+                  strings: [
+                    "Web Developer",
+                    "MERN Developer",
+                    "Frontend Developer",
+                    "Backend Developer",
+                  ],
+                  autoStart: true,
+                  loop: true,
+                  delay: 100,
+                  deleteSpeed: 100,
+                }}
               />
-            );
-          })}
-        </div>
-      </div>
-      <div
-        ref={contact}
-        className="w-full h-fit lg:px-20 md:px-10 px-6 mt-8 py-8 border-t-2 border-solid border-gray-200 font-poppins bg-gray-200"
-      >
-        <p className="bg-transparent lg:text-4xl text-3xl font-serif pb-6 pl-4">
-          Connect with me...
-        </p>
-        <div className="space-y-2 lg:w-2/5 pl-4 w-full">
-          <div className="space-y-1">
-            <Label htmlFor="name">Name</Label>
-            <Input
-              name="name"
-              id="name"
-              value={message.name}
-              onChange={(e) => setMessage({ ...message, name: e.target.value })}
-              placeholder="name"
-              title="Name"
-              inputMode="text"
-              autoComplete="given-name"
-            />
-          </div>
-          <div className="space-y-1">
-            <Label htmlFor="phone">Phone</Label>
-            <Input
-              name="phone"
-              placeholder="phone"
-              id="phone"
-              value={message.phone}
-              type="number"
-              onChange={(e) =>
-                setMessage({ ...message, phone: e.target.value })
-              }
-              title="Phone"
-              inputMode="numeric"
-              autoComplete="tel"
-            />
-          </div>
-          <div className="space-y-1">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              name="email"
-              placeholder="email"
-              id="email"
-              value={message.email}
-              onChange={(e) =>
-                setMessage({ ...message, email: e.target.value })
-              }
-              title="Email"
-              inputMode="email"
-              autoComplete="email"
-            />
-          </div>
-          <div className="space-y-1">
-            <Label htmlFor="message">Message</Label>
-            <Textarea
-              placeholder="message"
-              id="message"
-              name="message"
-              value={message.message}
-              onChange={(e) =>
-                setMessage({ ...message, message: e.target.value })
-              }
-              title="Message"
-            />
+            </h1>
+            <p className="lg:w-2/5 md:w-3/5 sm:w-4/5 w-4/5 mr-2 pt-4 tracking-[-0.01em]">
+              I specialize in building efficient, user-friendly applications
+              using modern technologies like Next.js, TypeScript, React,
+              Node.js, and MongoDB. My work is driven by a passion for creating
+              seamless digital experiences through clean, scalable code. I’m
+              always eager to explore emerging technologies and continuously
+              refine my skills to stay ahead in the ever-evolving tech
+              landscape.
+            </p>
+            <Button
+              size="lg"
+              className="text-lg mt-10"
+              onClick={() => contact.current.scrollIntoView()}
+            >
+              Connect
+            </Button>
           </div>
         </div>
-        <Button
-          onClick={saveMessage}
-          className="my-4 ml-4 capitalize font-normal"
-          size="lg"
-          disabled={
-            message.name.trim().length === 0 ||
-            message.message.trim().length === 0 ||
-            message.email.trim().length === 0 ||
-            loading
-          }
+        <div className="container">
+          <hr className="bg-stone-500 mb-6" />
+          <div className="flex flex-col items-center gap-6">
+            <h3
+              className="w-full text-center lg:text-4xl text-3xl font-extrabold font-serif"
+              ref={skills}
+            >
+              Skills
+            </h3>
+            <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-2 w-full">
+              <div className="bg-stone-200 dark:bg-stone-900 rounded-xl p-4 w-full">
+                <h3 className="text-center font-bold tracking-tight text-xl">
+                  Frameworks & Technologies
+                </h3>
+                <div className="w-full flex flex-wrap gap-2 py-4 px-2">
+                  <CustomBadge>{Icons.html}HTML</CustomBadge>
+                  <CustomBadge>{Icons.css}CSS</CustomBadge>
+                  <CustomBadge>{Icons.react}React</CustomBadge>
+                  <CustomBadge className="dark:hidden">
+                    {Icons.expressLight}Express
+                  </CustomBadge>
+                  <CustomBadge className="hidden dark:flex">
+                    {Icons.expressDark}Express
+                  </CustomBadge>
+                  <CustomBadge>{Icons.tailwind}Tailwind</CustomBadge>
+                  <CustomBadge>{Icons.nodejs}Node</CustomBadge>
+                  <CustomBadge className="dark:hidden">
+                    {Icons.nextLight}Next
+                  </CustomBadge>
+                  <CustomBadge className="hidden dark:flex">
+                    {Icons.nextDark}Next
+                  </CustomBadge>
+                </div>
+              </div>
+              <div className="bg-stone-200 dark:bg-stone-900 rounded-xl p-4 w-full">
+                <h3 className="text-center font-bold tracking-tight text-xl">
+                  Languages & Databases
+                </h3>
+                <div className="w-full flex flex-wrap gap-2 py-4 px-2">
+                  <CustomBadge>{Icons.js}JavaScript</CustomBadge>
+                  <CustomBadge>{Icons.typescript}TypeScript</CustomBadge>
+                  <CustomBadge>{Icons.mongo}MongoDB</CustomBadge>
+                </div>
+              </div>
+              <div className="bg-stone-200 dark:bg-stone-900 rounded-xl p-4 w-full">
+                <h3 className="text-center font-bold tracking-tight text-xl">
+                  Tools & Platforms
+                </h3>
+                <div className="w-full flex flex-wrap gap-2 py-4 px-2">
+                  <CustomBadge>{Icons.git}Git</CustomBadge>
+                  <CustomBadge className="dark:hidden">
+                    {Icons.githubLight}GitHub
+                  </CustomBadge>
+                  <CustomBadge className="hidden dark:flex">
+                    {Icons.githubDark}GitHub
+                  </CustomBadge>
+                  <CustomBadge className="dark:hidden">
+                    {Icons.vercelLight}Vercel
+                  </CustomBadge>
+                  <CustomBadge className="hidden dark:flex">
+                    {Icons.vercelDark}Vercel
+                  </CustomBadge>
+                  <CustomBadge>{Icons.render}Render</CustomBadge>
+                  <CustomBadge>{Icons.redux}Redux</CustomBadge>
+                  <CustomBadge>{Icons.zod}Zod</CustomBadge>
+                  <CustomBadge>
+                    {Icons.reactHookForm}React Hook Form
+                  </CustomBadge>
+                  <CustomBadge>{Icons.postman}Postman</CustomBadge>
+                </div>
+              </div>
+              <div className="bg-stone-200 dark:bg-stone-900 rounded-xl p-4 w-full">
+                <h3 className="text-center font-bold tracking-tight text-xl">
+                  Others
+                </h3>
+                <div className="w-full flex flex-wrap gap-2 py-4 px-2">
+                  <CustomBadge>{Icons.figma}Figma</CustomBadge>
+                  <CustomBadge>{Icons.jwt}JsonWebToken</CustomBadge>
+                  <CustomBadge>{Icons.linux}Linux</CustomBadge>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr className="bg-stone-500 my-6" />
+          <div ref={projects} className="w-full flex flex-col">
+            <h3 className="w-full text-center lg:text-4xl text-3xl font-extrabold font-serif">
+              Projects
+            </h3>
+            <div className="flex justify-center flex-col sm:gap-2 lg:flex-row gap-6 font-poppins">
+              {repos.map((repo) => {
+                return (
+                  <ProjectCard
+                    key={repo.name}
+                    image={repo.image}
+                    heading={repo.name}
+                    details={repo.description}
+                    visit={repo.homepage}
+                    code={repo.html_url}
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </div>
+        <div
+          ref={contact}
+          className="w-full text-center px-6 mt-6 py-8 bg-stone-100 dark:bg-stone-900"
         >
-          {loading ? <Loader2 className="animate-spin" /> : "Submit"}
-        </Button>
-      </div>
-      <Footer />
-    </section>
+          <div className="container w-full">
+            <h3 className="bg-transparent lg:text-4xl text-3xl font-serif pb-6 pl-4 w-full font-extrabold">
+              Contact me
+            </h3>
+            <div className="space-y-2 lg:w-2/5 pl-4 w-full mx-auto text-left">
+              <div className="space-y-1">
+                <Label htmlFor="name">Name</Label>
+                <Input
+                  name="name"
+                  id="name"
+                  value={message.name}
+                  onChange={(e) =>
+                    setMessage({ ...message, name: e.target.value })
+                  }
+                  placeholder="name"
+                  title="Name"
+                  inputMode="text"
+                  autoComplete="given-name"
+                />
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="phone">Phone</Label>
+                <Input
+                  name="phone"
+                  placeholder="phone"
+                  id="phone"
+                  value={message.phone}
+                  type="number"
+                  onChange={(e) =>
+                    setMessage({ ...message, phone: e.target.value })
+                  }
+                  title="Phone"
+                  inputMode="numeric"
+                  autoComplete="tel"
+                />
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="email">Email</Label>
+                <Input
+                  name="email"
+                  placeholder="email"
+                  id="email"
+                  value={message.email}
+                  onChange={(e) =>
+                    setMessage({ ...message, email: e.target.value })
+                  }
+                  title="Email"
+                  inputMode="email"
+                  autoComplete="email"
+                />
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="message">Message</Label>
+                <Textarea
+                  placeholder="message"
+                  id="message"
+                  name="message"
+                  value={message.message}
+                  onChange={(e) =>
+                    setMessage({ ...message, message: e.target.value })
+                  }
+                  title="Message"
+                />
+              </div>
+            </div>
+            <Button
+              onClick={saveMessage}
+              className="my-4 ml-4 capitalize font-normal"
+              size="lg"
+              disabled={
+                message.name.trim().length === 0 ||
+                message.message.trim().length === 0 ||
+                message.email.trim().length === 0 ||
+                loading
+              }
+            >
+              {loading ? <Loader2 className="animate-spin" /> : "Submit"}
+            </Button>
+          </div>
+        </div>
+        <Footer />
+      </section>
+    </ThemeProvider>
   );
 }

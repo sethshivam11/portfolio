@@ -22,6 +22,7 @@ const MyPage = () => {
             messages.filter((message) => message._id !== messageId)
           );
           toast.success(jsonData.message, { id: toastLoading });
+          setPassword("");
         } else {
           toast.error(jsonData.message, { id: toastLoading });
         }
@@ -65,7 +66,7 @@ const MyPage = () => {
           All Messages
         </h1>
         <div
-          className={`w-full h-fit min-h-96 p-2 mb-2 flex flex-col items-center justify-center gap-2 ${
+          className={`w-full h-fit min-h-96 p-2 mb-2 grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-2 ${
             isLoggedin ? "" : "hidden"
           }`}
         >
