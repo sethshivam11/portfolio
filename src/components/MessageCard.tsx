@@ -44,14 +44,14 @@ export function MessageCard({
   const [open, setOpen] = React.useState(false);
   const [showPwd, setShowPwd] = React.useState(false);
 
-  const handleOpen = () => setOpen(!open);
+  const handleOpen = () => setOpen((prev) => !prev);
   return (
     <Card className="w-full max-w-full flex flex-col justify-between bg-transparent ring-1 ring-gray-500 bg-zinc-800">
       <CardContent className="">
         <h1 className="mb-2 text-2xl font-extrabold tracking-tight capitalize text-center my-4">
           {name}
         </h1>
-        <p className="text-md mt-4 text-gray-300 h-full">{message}</p>
+        <p className="text-md mt-4 text-gray-300 h-full overflow-hidden text-wrap">{message}</p>
       </CardContent>
       <CardFooter>
         <div className="flex items-center justify-center gap-2 w-full flex-wrap">

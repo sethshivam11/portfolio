@@ -92,6 +92,7 @@ export default function Home() {
       "todo!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1707051363/gadget-store/omkupcly4hprbbtbivql.png",
       "campus-space!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1716479483/gadget-store/xj2ylslxkzz99acd1xbs.png",
       "social-media-backend!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1716652387/gadget-store/g84hiq73cygxp71gh42k.jpg",
+      "sociial!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1742100714/gadget-store/lcobax6epwyx2zpkdyok.png",
     ];
 
     const getRepos = (url: string) => {
@@ -103,7 +104,7 @@ export default function Home() {
             if (
               repository.name === "campus-space" ||
               repository.name === "gadgetstore" ||
-              repository.name === "social-media-backend"
+              repository.name === "sociial"
             ) {
               mapData.push(repository);
               let name: string = repository.name;
@@ -189,7 +190,7 @@ export default function Home() {
               Skills
             </h3>
             <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-2 w-full">
-              <div className="bg-stone-200 dark:bg-stone-900 rounded-xl p-4 w-full">
+              <div className="rounded-xl p-4 w-full ring-1 ring-muted-foreground bg-muted">
                 <h3 className="text-center font-bold tracking-tight text-xl">
                   Frameworks & Technologies
                 </h3>
@@ -213,7 +214,7 @@ export default function Home() {
                   </CustomBadge>
                 </div>
               </div>
-              <div className="bg-stone-200 dark:bg-stone-900 rounded-xl p-4 w-full">
+              <div className="rounded-xl p-4 w-full ring-1 ring-muted-foreground bg-muted">
                 <h3 className="text-center font-bold tracking-tight text-xl">
                   Languages & Databases
                 </h3>
@@ -223,7 +224,7 @@ export default function Home() {
                   <CustomBadge>{Icons.mongo}MongoDB</CustomBadge>
                 </div>
               </div>
-              <div className="bg-stone-200 dark:bg-stone-900 rounded-xl p-4 w-full">
+              <div className="rounded-xl p-4 w-full ring-1 ring-muted-foreground bg-muted">
                 <h3 className="text-center font-bold tracking-tight text-xl">
                   Tools & Platforms
                 </h3>
@@ -250,7 +251,7 @@ export default function Home() {
                   <CustomBadge>{Icons.postman}Postman</CustomBadge>
                 </div>
               </div>
-              <div className="bg-stone-200 dark:bg-stone-900 rounded-xl p-4 w-full">
+              <div className="rounded-xl p-4 w-full ring-1 ring-muted-foreground bg-muted">
                 <h3 className="text-center font-bold tracking-tight text-xl">
                   Others
                 </h3>

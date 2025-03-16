@@ -26,6 +26,7 @@ export const ProjectCard = ({
       >
         <Image
           src={image}
+          draggable={false}
           className="object-contain"
           objectFit="contain"
           layout="fill"
@@ -41,10 +42,7 @@ export const ProjectCard = ({
           <Button className="mr-4 mt-2">Visit</Button>
         </Link>
         <Link href={code} target="_blank">
-          <Button
-            className="mt-2"
-            variant="outline"
-          >
+          <Button className="mt-2" variant="outline">
             Code
           </Button>
         </Link>
