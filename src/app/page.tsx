@@ -26,7 +26,6 @@ export interface Message {
   _id: string;
   name: string;
   email: string;
-  phone: string;
   message: string;
 }
 
@@ -36,7 +35,6 @@ export default function Home() {
   const [loading, setLoading] = React.useState(false);
   const [message, setMessage] = React.useState({
     name: "",
-    phone: "",
     message: "",
     email: "",
   });
@@ -54,7 +52,7 @@ export default function Home() {
       .then((data) => {
         if (data.success && data.message === "Message saved successfully") {
           setLoading(false);
-          setMessage({ name: "", message: "", phone: "", email: "" });
+          setMessage({ name: "", message: "", email: "" });
           toast.success("Message sent successfully");
         } else {
           setLoading(false);
@@ -74,25 +72,9 @@ export default function Home() {
 
   React.useEffect(() => {
     const images = [
-      "gadgetstore!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1716479485/gadget-store/hk5fbe0osyhfnigas0it.png",
-      "chatapp!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456419/gadget-store/coz0elqxhrucgsfefwf8.png",
-      "cloudnotebook!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456418/gadget-store/zxbhft8dxwdwwcyiikf4.png",
-      "moviesandtv!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1706461801/gadget-store/wtjjddmuatsxzvpbyjps.png",
-      "2048!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456420/gadget-store/kfhxvzhotnfbukmb69hy.png",
-      "copypaste!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456418/gadget-store/flolutsgg2ei8goxnslg.png",
-      "grosery!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456425/gadget-store/ed7l6bcujfqy1cnaapt1.png",
-      "myonline!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456424/gadget-store/lfbl4cvuvf92xtyz2vk0.png",
-      "newsapp!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456421/gadget-store/dl8ytjgggiuwcnejk0ym.png",
-      "robospeaker!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456912/gadget-store/vgchgwjhexbnut7duthn.png",
-      "scholarship!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456421/gadget-store/kh0cum8cfkb4hwa6dg7l.png",
-      "sda!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456889/gadget-store/tmafjkxcttnzqjnpdi93.png",
-      "sudoku!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1704456421/gadget-store/sl8tmc385fkothhl8g0x.png",
-      "weather!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1705748723/gadget-store/e2glyvsyxj5ad1t8m0w4.png",
-      "gpt-clone!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1707051362/gadget-store/fgkfhdy057qwcg3bpuar.png",
-      "todo!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1707051363/gadget-store/omkupcly4hprbbtbivql.png",
-      "campus-space!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1716479483/gadget-store/xj2ylslxkzz99acd1xbs.png",
-      "social-media-backend!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1716652387/gadget-store/g84hiq73cygxp71gh42k.jpg",
-      "sociial!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1742100714/gadget-store/lcobax6epwyx2zpkdyok.png",
+      "gadget-store!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1744524957/portfolio/chzs9wo4zdhekhzxlb6d.png",
+      "campus-space!https://res.cloudinary.com/dv3qbj0bn/image/upload/v1744524945/portfolio/rr97kg4geno54vfoo8od.png",
+      "sociial!https://sociial.vercel.app/hero-light.png",
     ];
 
     const getRepos = (url: string) => {
@@ -103,7 +85,7 @@ export default function Home() {
           data.forEach((repository: Repo) => {
             if (
               repository.name === "campus-space" ||
-              repository.name === "gadgetstore" ||
+              repository.name === "gadget-store" ||
               repository.name === "sociial"
             ) {
               mapData.push(repository);
@@ -306,22 +288,6 @@ export default function Home() {
                   title="Name"
                   inputMode="text"
                   autoComplete="given-name"
-                />
-              </div>
-              <div className="space-y-1">
-                <Label htmlFor="phone">Phone</Label>
-                <Input
-                  name="phone"
-                  placeholder="phone"
-                  id="phone"
-                  value={message.phone}
-                  type="number"
-                  onChange={(e) =>
-                    setMessage({ ...message, phone: e.target.value })
-                  }
-                  title="Phone"
-                  inputMode="numeric"
-                  autoComplete="tel"
                 />
               </div>
               <div className="space-y-1">
