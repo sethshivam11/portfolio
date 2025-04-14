@@ -77,7 +77,6 @@ const MyPage = () => {
                   key={index}
                   name={msg.name}
                   email={msg.email}
-                  phone={msg.phone}
                   message={msg.message}
                   _id={msg._id}
                   handleDelete={handleDelete}
@@ -91,7 +90,6 @@ const MyPage = () => {
               <MessageCard
                 name="No Messages"
                 email="N/A"
-                phone="N/A"
                 message="No messages since last update"
                 _id="null"
                 handleDelete={handleDelete}

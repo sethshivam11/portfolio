@@ -22,7 +22,6 @@ import { Input } from "./ui/input";
 
 interface Props {
   email: string;
-  phone: string;
   message: string;
   name: string;
   _id: string;
@@ -33,7 +32,6 @@ interface Props {
 
 export function MessageCard({
   email,
-  phone,
   message,
   name,
   _id,
@@ -58,7 +56,7 @@ export function MessageCard({
           <div className="w-full flex gap-2">
             <TooltipProvider>
               <Tooltip>
-                <TooltipTrigger className={phone ? "w-1/2" : "w-full"} asChild>
+                <TooltipTrigger className="w-full" asChild>
                   <Button
                     size="lg"
                     className="w-full"
@@ -70,25 +68,6 @@ export function MessageCard({
                 <TooltipContent>{email}</TooltipContent>
               </Tooltip>
             </TooltipProvider>
-            {phone ? (
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger className="w-1/2" asChild>
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="w-full"
-                      onClick={() => (window.location.href = `tel:${phone}`)}
-                    >
-                      Call
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>{phone}</TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            ) : (
-              ""
-            )}
           </div>
           <Dialog>
             <DialogTrigger asChild>
